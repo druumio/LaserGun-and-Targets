@@ -42,7 +42,7 @@ int main()
     servo_enable(SERVO_5);
 
     bool clockwise = true;
-    uint angle = 0;
+    uint angle = min;
 
     servo_set_position(SERVO_1, angle);
     servo_set_position(SERVO_2, angle);
@@ -78,7 +78,7 @@ int main()
         {
             angle--;
         }
-        if (angle == 0 || angle == 180)
+        if (angle == min || angle == max)
         {
             clockwise = !clockwise;
             // printf("Current angle: %d\n", angle);
