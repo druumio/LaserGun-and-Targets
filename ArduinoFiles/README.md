@@ -6,7 +6,9 @@ I just got some new components, what can I do with it
 
 ## Test 2
 [<img src="PhotoDiode1.png" width="200"/>]()
+
 Point laser-pointer to sensor and led lights up
+
 Testing R1 and adjusting sensitivity
 
 ## Laser 1
