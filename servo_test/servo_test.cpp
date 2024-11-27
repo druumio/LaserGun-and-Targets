@@ -13,7 +13,11 @@
 #define I2C_SDA 8
 #define I2C_SCL 9
 
-#define SERVO_PIN 15
+#define SERVO_1 15
+#define SERVO_2 16
+#define SERVO_3 17
+#define SERVO_4 18
+#define SERVO_5 19
 
 int main()
 {
@@ -31,33 +35,44 @@ int main()
     gpio_pull_up(I2C_SCL);
     // For more examples of I2C use see https://github.com/raspberrypi/pico-examples/tree/master/i2c
 
-    pico_servo::servo_enable(SERVO_PIN);
+    servo_enable(SERVO_1);
+    servo_enable(SERVO_2);
+    servo_enable(SERVO_3);
+    servo_enable(SERVO_4);
+    servo_enable(SERVO_5);
 
     bool clockwise = true;
     uint angle = 0;
 
-    pico_servo::servo_set_position(SERVO_PIN, angle);
+    servo_set_position(SERVO_1, angle);
+    servo_set_position(SERVO_2, angle);
+    servo_set_position(SERVO_3, angle);
+    servo_set_position(SERVO_4, angle);
+    servo_set_position(SERVO_5, angle);
 
     // Block until usb serial is open
-    while (!tud_cdc_connected())
-    {
-        sleep_ms(100);
-    }
+    // while (!tud_cdc_connected())
+    //{
+    //    sleep_ms(100);
+    //}
 
-    printf("Servo test Starting!\n");
-    
+    // printf("Servo test Starting!\n");
 
     while (true)
     {
 
-        pico_servo::servo_set_position(SERVO_PIN, angle);
+        servo_set_position(SERVO_1, angle);
+        servo_set_position(SERVO_2, angle);
+        servo_set_position(SERVO_3, angle);
+        servo_set_position(SERVO_4, angle);
+        servo_set_position(SERVO_5, angle);
 
         sleep_ms(20);
 
         if (clockwise)
         {
             angle++;
-            printf("Current angle: %d\n", angle);
+            // printf("Current angle: %d\n", angle);
         }
         else
         {
@@ -66,7 +81,7 @@ int main()
         if (angle == 0 || angle == 180)
         {
             clockwise = !clockwise;
-            printf("Current angle: %d\n", angle);
+            // printf("Current angle: %d\n", angle);
         }
     }
 }
